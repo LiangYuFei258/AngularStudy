@@ -8,6 +8,15 @@ import { FooterComponent } from './footer/footer.component';
 import { SearchComponent } from './search/search.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ProductComponent } from './product/product.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { HomeComponent } from './home/home.component';
+import { Routes, RouterModule } from '@angular/router';
+import { ProductService } from './shared/product.service';
+
+const routeConfig: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'product/:productId', component: ProductDetailComponent }
+];
 
 @NgModule({
   declarations: [
@@ -17,12 +26,15 @@ import { ProductComponent } from './product/product.component';
     FooterComponent,
     SearchComponent,
     CarouselComponent,
-    ProductComponent
+    ProductComponent,
+    ProductDetailComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routeConfig)
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
